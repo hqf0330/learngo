@@ -23,11 +23,11 @@ func main() {
 	}
 
 	for _, item := range result.Items {
-		if monthBefore.Before(item.CreatedAt) {
+		if monthBefore.After(item.CreatedAt) {
 			monthBuf = append(monthBuf, item)
-		} else if yearBefore.Before(item.CreatedAt) {
-			yearBuf = append(yearBuf, item)
 		} else if yearBefore.After(item.CreatedAt) {
+			yearBuf = append(yearBuf, item)
+		} else if yearBefore.Before(item.CreatedAt) {
 			yearAfter = append(yearAfter, item)
 		}
 	}
